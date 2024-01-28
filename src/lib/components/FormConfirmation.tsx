@@ -42,7 +42,7 @@ const FormConfirmation = ({ group = '-' }: Props) => {
             </h2>
             <button
                 onClick={openModal}
-                className='px-5 mt-10 py-3 text-center font-sans font-medium text-accent border border-accent bg-transparent hover:bg-accent hover:text-white rounded-lg transition-all'
+                className='px-5 mt-10 py-3 text-center font-sans font-medium hover:text-accent border border-accent hover:bg-transparent bg-accent text-white rounded-lg transition-all'
             >
                 RSVP
             </button>
