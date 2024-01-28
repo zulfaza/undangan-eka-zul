@@ -17,7 +17,7 @@ export default function Home({ params }: { params: { group: string, groupName: s
         <div className="bg-[#15264872] opacity-50 w-full h-full absolute left-0 top-0 z-10"></div>
         <section className="container relative h-full z-20 flex justify-center items-center">
           <div className="text-white text-center relative z-10" >
-            <h2 className='text-sm mb-10'>The Weeding Of</h2>
+            <h2 className='text-sm mb-10'>The Wedding Of</h2>
             <h1 className='font-strawberrycupcakes text-5xl md:text-8xl mb-5'>Zul & Eka</h1>
           </div>
         </section>
