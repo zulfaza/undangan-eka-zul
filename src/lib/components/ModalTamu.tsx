@@ -46,7 +46,7 @@ const ModalTamu = ({ group, groupName }: Props) => {
                                     <div className='bg-gradient-to-t from-[rgba(64,80,107,0.50)] from-65% to-transparent absolute top-0 left-0 w-full h-full z-0'></div>
                                     <div className='z-10 relative'>
                                         <div className='mb-5 text-white'>
-                                            <h3 className='text-sm mb-10'>The Weeding Of</h3>
+                                            <h3 className='text-sm mb-10'>The Wedding Of</h3>
                                             <h2 className='font-strawberrycupcakes text-5xl md:text-8xl mb-5'>Zul & Eka</h2>
                                             {group !== '-' &&
                                                 <>
