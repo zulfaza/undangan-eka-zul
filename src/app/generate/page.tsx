@@ -1,10 +1,34 @@
-import FormGenerateInvitation from '@/lib/components/FormGenerateInvitation'
-import React from 'react'
+'use client';
+
+import FormGenerateInvitation from '@/lib/components/FormGenerateInvitation';
+import AuthProvider, { useAuth } from '@/lib/context/AuthContext';
+import React from 'react';
 
 const GenerateInvitation = () => {
+    const {
+        state: { user },
+        actions: { logout, login },
+    } = useAuth();
     return (
-        <FormGenerateInvitation />
-    )
-}
+        <main className='bg-[#161d28] w-screen h-screen flex items-center justify-center'>
+            {!user ? (
+                <button className='bg-blue-400 hover:bg-blue-300 text-white transition-colors px-3 py-2 rounded w-fit' onClick={login}>Login</button>
+            ) : (
+                <section className='w-full'>
+                    <div className='container my-4 flex justify-center px-6 py-2 rounded'>
+                        <button className='bg-blue-400 hover:bg-blue-300 text-white transition-colors px-3 py-2 rounded w-fit' onClick={logout}>Logout</button>
+                    </div>
+                    <FormGenerateInvitation />
+                </section>
+            )}
+        </main>
+    );
+};
 
-export default GenerateInvitation
+const GenerateInvitationWrapper = () => (
+    <AuthProvider>
+        <GenerateInvitation />
+    </AuthProvider>
+);
+
+export default GenerateInvitationWrapper;

@@ -2,9 +2,11 @@
 
 import { db } from '@/lib/firebase';
 import { initGoogle } from '@/lib/google';
+import makeId from '@/lib/helper/makeId';
 import {
   addDoc,
   collection,
+  deleteDoc,
   doc,
   increment,
   setDoc,
@@ -12,22 +14,60 @@ import {
   updateDoc,
 } from 'firebase/firestore';
 import { revalidateTag } from 'next/cache';
+import slugify from 'slugify';
 
 export async function AddInvitation(_prevState: any, formData: FormData) {
   try {
-    const id = formData.get('id') as string;
+    const requestId = formData.get('id') as string;
     const name = formData.get('name');
     const expected = (formData.get('expected') as string) ?? '0';
+    const user_id = formData.get('uid');
+
+    const id = requestId.length > 0 ? slugify(requestId) : makeId(5);
 
     await setDoc(doc(db, 'invitations', id), {
       groupName: name,
       expected: isNaN(parseInt(expected)) ? 0 : parseInt(expected),
       confirm: 0,
+      user_id,
       date: Timestamp.now(),
     });
 
     return {
       message: 'Berhasil menambahkan undangan',
+      success: true,
+      error: false,
+    };
+  } catch (error) {
+    let ErrorMessage = 'Terjadi Kesalahan, mohon coba lagi';
+    if (
+      error &&
+      typeof error === 'object' &&
+      'message' in error &&
+      typeof error.message === 'string'
+    ) {
+      ErrorMessage = error.message;
+    }
+
+    return {
+      message: ErrorMessage,
+      success: false,
+      error: true,
+    };
+  }
+}
+
+export async function DeleteInvitation(_prevState: any, formData: FormData) {
+  try {
+    const id = formData.get('id') as string;
+    if (!id) {
+      throw new Error('Missing id');
+    }
+
+    await deleteDoc(doc(db, 'invitations', id));
+
+    return {
+      message: 'Berhasil menghapus',
       success: true,
       error: false,
     };
