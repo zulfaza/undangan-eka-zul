@@ -10,7 +10,7 @@ const GenerateInvitation = () => {
         actions: { logout, login },
     } = useAuth();
     return (
-        <main className='bg-[#161d28] w-screen h-screen flex items-center justify-center'>
+        <main className='bg-[#161d28] w-full h-full min-h-screen flex items-center justify-center'>
             {!user ? (
                 <button className='bg-blue-400 hover:bg-blue-300 text-white transition-colors px-3 py-2 rounded w-fit' onClick={login}>Login</button>
             ) : (
