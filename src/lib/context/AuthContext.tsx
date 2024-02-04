@@ -3,7 +3,7 @@
 import { GoogleAuthProvider, User, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 
 const initialState = {
     user: null,
@@ -56,7 +56,8 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             }
         });
         console.log("User : ", loggedInUser);
-        const prevData = await getDoc(doc(db, 'users', loggedInUser.uid));
+        const prevData = await getDoc(doc(
+            db, 'users', loggedInUser.uid));
         if (!prevData.exists()) {
             await setDoc(doc(db, 'users', loggedInUser.uid), {
                 email: loggedInUser.email,

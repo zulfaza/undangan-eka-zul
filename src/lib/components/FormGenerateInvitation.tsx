@@ -16,12 +16,6 @@ import { auth, db } from '../firebase';
 import slugify from 'slugify';
 import makeId from '../helper/makeId';
 
-const intialState = {
-    message: '',
-    error: false,
-    success: false,
-};
-
 type InvitationType = {
     id: string;
     groupName: string;
@@ -117,7 +111,7 @@ const InvitationCard = ({ invitation }: InvitationCardProps) => {
                     <button
                         type='button'
                         onClick={() => handleDeleteDoc(invitation.id)}
-                        // aria-disabled={IsLoading}
+                        aria-disabled={IsLoading}
                         className='bg-gray-700 aria-disabled:bg-gray-400 aria-disabled:cursor-wait disabled:cursor-wait disabled:bg-gray-400 border-2 border-gray-700 hover:bg-gray-600 transition-all px-3 py-2 rounded text-white text-center text-xs'
                     >
                         Delete
