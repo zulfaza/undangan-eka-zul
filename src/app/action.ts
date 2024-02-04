@@ -1,8 +1,9 @@
 'use server';
 
-import { db } from '@/lib/firebase';
+import { app, auth, db } from '@/lib/firebase';
 import { initGoogle } from '@/lib/google';
 import makeId from '@/lib/helper/makeId';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import {
   addDoc,
   collection,
@@ -46,6 +47,7 @@ export async function AddInvitation(_prevState: any, formData: FormData) {
       'message' in error &&
       typeof error.message === 'string'
     ) {
+      console.log(error);
       ErrorMessage = error.message;
     }
 

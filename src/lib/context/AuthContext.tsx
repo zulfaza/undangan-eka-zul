@@ -1,9 +1,9 @@
 'use client';
 
-import { GoogleAuthProvider, User, getAuth, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
+import { GoogleAuthProvider, User, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
-import { app } from "../firebase";
-import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { auth } from "../firebase";
 
 const initialState = {
     user: null,
@@ -30,9 +30,6 @@ export const AuthContext = createContext<{
 });
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-
     const [User, setUser] = useState<AuthContextStateType['user']>(null);
     const [IsLoading, setIsLoading] = useState(true);
 
