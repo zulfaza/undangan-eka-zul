@@ -96,7 +96,8 @@ export default function Home({ params }: { params: { group: string, groupName: s
               <h5 className="text-center mb-3 italic text-xs text-accent">MINGGU</h5>
               <h3 className="text-center font-analogue text-[#D7AC64] text-5xl mb-5">18</h3>
               <h5 className="text-center mb-3 italic text-xs text-accent">FEBRUARI 2024</h5>
-              <p className="italic text-center text-sm text-accent">Pukul : 07.30 – 09.00 WIB</p>
+              <p className="italic text-center text-sm text-accent">Akad : 07.30 – 09.00 WIB</p>
+              <p className="italic text-center text-sm text-accent">Resepsi : 09.30 – 14.00 WIB</p>
             </div>
             <div className="px-5 py-10 rounded-2xl w-full bg-white text-center bg-cover">
               <h4 className="font-analogue text-[#D7AC64] text-3xl mb-5">Lokasi</h4>
